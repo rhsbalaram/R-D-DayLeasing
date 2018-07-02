@@ -1,0 +1,37 @@
+<div class="top-content">
+	<div class="inner-bg">
+		<div class="container">
+			<div main-header></div>
+			<div class="main">
+				<div class="prop-hed">
+					<h2>Hunter Details </h2>
+				</div>
+				<div class="dashbord-item dashbord-item-owner">
+					<table class="table table-responsive table-striped">
+                	<thead>
+                    	<tr>
+                        	<th>S.No.</th>
+                            <th>Hunter Name</th>
+                            <th>Email ID</th>
+                            <th>Phone Number</th>
+                            <th>Account Created Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="hunter in hunters">
+                        	<td>{{$index+1}}</td>
+                            <td>{{hunter.fname}}</td>
+                            <td>{{hunter.emailId}}</td>
+                            <td>{{hunter.phone}}</td>
+                            <td>{{hunter.createdDate | date : 'MMM dd, yyyy'}}</td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+				</div>
+			</div>
+			<div footer></div>
+		</div>
+	</div>
+</div>
+

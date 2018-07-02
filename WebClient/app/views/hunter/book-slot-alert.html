@@ -1,0 +1,95 @@
+<!-- Top content -->
+<div class="top-content">
+  <div class="inner-bg">
+    <div tabindex="1" id="Focus" class="container">
+      <div ng-show="login" hunter-header></div>
+			<div ng-show="!login" header></div>
+<div class="cart-page prop-area">
+      
+      <div class="col-md-12 no-pad">
+      	<div class="row time-out-alert">{{timer}}</div>
+      	<div class="col-md-7 col-xs-12 no-pad">
+        <div  class="prop-hed">
+      <h2>Book slot</h2>
+      </div>
+        <div class="outline-instractions"><b>Property Name:</b> <i>{{property.propertyName}}</i>  |  <b>Location:</b> <i>{{property.subRegion+', '+property.region}}</i> </div>
+       </div>
+       <div class="col-md-5 col-xs-12 no-pad-right">
+            <form name="prop" role="form" ng-submit="gotoHunterCartDetails()" class="login-form">
+                  
+                   <div class="cart-page-btns no-top-marg">
+                   <div class="col-md-6">
+                   <datepicker datepicker-mobile="true" date-format="MM/dd/yyyy" date-min-limit="{{cart.minDate}}"  >
+                  <input  name="datefrom" class="form-username form-control datepicker calendar-icon"  placeholder="MM/DD/YYYY" ng-model="cart.selectedDate" ng-change="onDateChange()" type="text" required>
+                  </datepicker>
+                  </div>
+                    <!--<button type="button"  class="btn update-btn"><img src="../../assets/img/calendar.png" class="icons">May 17, 2017</button>-->
+                    <div class="colmd-6">
+                     <button type="submit"  class="btn update-btn pull-right m-cart-btn"><img src="../../assets/img/cart-icon.png" class="icons"><div ng-show="cart.cartcount" class="alert-num">{{cart.bookings.length}}</div> Go to Cart</button>
+                     </div>
+                   </div>
+    
+                </form>
+       </div>
+       </div>
+      <div class="dashbord-item m-alert-info">	
+      	<div class="col-md-12 no-pad">
+        	<div class="row loginForm2">
+        <div class="form-box">
+          <div class="form-bottom2 text-center">
+            <form role="form" class="login-form">
+            	<div class="map-page outline">
+               		<div id="outlinemap" class="map-area"></div>
+               		 <div class="avilable-slots-area">
+                    	<h5><img src="../../assets/img/green.png"> Slot Available</h5>
+                        <h5><img src="../../assets/img/orange.png"> Slot Added</h5>
+                        <h5><img src="../../assets/img/gray.png"> Slot Unavailable</h5>
+                    </div>
+               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+        </div>
+       
+       
+       
+       
+      </div>
+        </div>
+        </div>
+      <div footer></div>
+    </div>
+  </div>
+
+
+ <!-- Modal -->
+  <div class="modal fade in" id="datemodel" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="prop-hed ">
+					<h2 class="clr">REMEMBER TO CLICK THE CALENDAR FIELD!</h2>
+				</div>
+        </div>
+        <div class="modal-body">
+          <div class="main dashbordHeight no-marg">
+				<div class="dashbord-item terms-page">
+                <h4 class="modal-title">Be sure to click the CALENDAR field first in order to display the available slots for that day.<br><br>
+                <img src="http://doveblasters.com/webimages2017/date2.jpg"> </h4>
+                
+				</div>
+				
+				
+			</div>
+        </div>
+        <div class="modal-footer">
+        	<button type="button" ng-click="disableModal()" class="btn btn-default" data-dismiss="modal">GOT IT!</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>

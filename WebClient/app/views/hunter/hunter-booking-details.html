@@ -1,0 +1,50 @@
+<div class="top-content">
+	<div class="inner-bg">
+		<div class="container">
+			<div hunter-header></div>
+			<div class="main">
+				<div class="prop-hed">
+					<h2>Upcoming Hunts</h2>
+				</div>
+				<div ng-repeat="booking in Bookings" class="dashbord-item dashbord-item-hunter">
+
+					<div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 no-pad">
+						<div ng-click="gotoLocationTracking(booking.propertyUuid,booking.propertySlotsUuid)" class="hunter-map">
+							<leaf id="{{booking.propertyReservationUuid}}" class="hunter-dash-map-area"></leaf>
+						</div>
+					</div>
+
+			    <div class="col-md-7 col-sm-12 col-xs-12 no-pad propInfo">
+                <h3>{{booking.propertyName}}</h3>
+                <table class="table table-responsive">
+                	<thead>
+                    	<tr>
+                        	<th>Slot:</th>
+                            <th>Cost Before Coupon</th>
+                            <th>Date</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<tr>
+                        	<td>{{booking.slotName}}</td>
+                            <td>${{booking.price/100}}</td>
+                            <td>{{booking.formattedDate}}</td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                
+                </div>
+                <div class="col-md-3 col-sm-12 col-xs-12 no-pad propInfo">
+                	<div class="form-btns">
+					<button type="button" ng-click="showRoutes(booking.routeurl)" class="btn update-btn directions-btn pull-right"><img src="assets/img/ico-direcion.png"> Driving Directions</button>
+				   </div>
+                </div>
+				</div>
+				
+			</div>
+			<div footer></div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,47 @@
+<div class="main prop-area">
+      <div  class="prop-hed">
+      <h2>Add Property </h2>
+      </div>
+      <div ng-show="disableButton" class="outline-instractions"><b>First:</b> <i>Find your Location</i>  |  <b>Second:</b> <i>Draw the Property Border</i> </div><div class="outline-instractions" ng-show="!disableButton"><b>First:</b> <i>Hold the Handler</i>  |  <b>Second:</b> <i>Change the position</i> </div>
+      <div class="dashbord-item">	
+      	<div class="col-md-12 no-pad">
+        	<div class="row loginForm2">
+        <div class="form-box">
+          <div class="form-bottom2 text-center">
+            <form role="form" class="login-form">
+            	<div class="map-page outline">
+               		<div id="outlinemap" class="map-area"></div>
+               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="col-md-12">
+        
+            <div class="row loginForm2 prop-add-area">
+            <div class="form-box">
+              <div class="form-top">
+               <!--<div class="form-top-left">
+                  <h3>Property Details</h3>
+                </div>-->
+              </div>
+              <div class="form-bottom text-center">
+                <form name="prop" role="form" ng-submit="addOutline()" class="login-form">
+                  
+                   <div class="form-group">
+                    <button type="button" ng-click="gotoDashboard()" class="btn cancel-btn">Cancel</button>
+                    <button type="submit"   ng-disabled="disableButton" class="btn update-btn pull-right">Next <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    
+                   </div>
+    
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+       
+       
+      </div>
+        </div>

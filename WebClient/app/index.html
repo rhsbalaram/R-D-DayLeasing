@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DayLeasing</title>
+
+<!-- CSS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,600,600i,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/form-elements.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/leaflet-search.css" />
+<link rel="stylesheet" href="assets/css/Control.Geocoder.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.css">
+ <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.4/dist/esri-leaflet-geocoder.css">
+    
+
+
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+<!-- Favicon and touch icons -->
+<link rel="shortcut icon" href="assets/ico/favicon.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+<!-- leaflet -->
+
+<!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script> -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.3/leaflet.js"></script>
+<script src="lib/leaflet-search.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.css"/>
+<link rel="stylesheet" href="bower_components/angularjs-datepicker/src/css/angular-datepicker.css"/>
+<link rel="stylesheet" href="bower_components/angular-block-ui/dist/angular-block-ui.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/0.4.9/leaflet.draw.js"></script>
+<script src="https://cdn.jsdelivr.net/sweetalert2/6.6.2/sweetalert2.js"></script>
+<script src="https://js.stripe.com/v2/"></script>
+<script src="https://js.stripe.com/v3/"></script>
+
+ <!-- Load Esri Leaflet from CDN -->
+ <script src="https://unpkg.com/esri-leaflet@2.0.8"></script>
+<script src="https://unpkg.com/esri-leaflet-geocoder@2.2.4"></script>
+<script  src="lib/Leaflet.AccuratePosition.js"></script>
+
+
+
+<script src="lib/L.Path.Drag.js"></script>
+<script src="lib/L.Path.Transform.js"></script>
+
+<script src="lib/Control.Geocoder.js"></script>
+<script type="text/javascript">
+window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+	$.src="https://v2.zopim.com/?51uNpzyMvzwiM1yJKzQbarLbuOK9ZhH9";z.t=+new Date;$.
+	type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+	
+</script>
+</head>
+<body  ng-app="dayLeasingApp">
+   	<div ui-view></div>
+
+      
+    
+      
+      
+    
+
+<!-- Javascript --> 
+<script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angularjs-datepicker/src/js/angular-datepicker.js"></script>
+    <script src="bower_components/angular-block-ui/dist/angular-block-ui.js"></script>
+     <script src="bower_components/angular-recaptcha/release/angular-recaptcha.js"></script>
+<!--  -->
+<script src="https://cdn.jsdelivr.net/es6-promise-polyfill/1.2.0/promise.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular-cookies.min.js"></script>
+ <script src="assets/js/jquery.backstretch.min.js"></script> 
+ <script src="assets/js/scripts.js"></script> 
+ <script src="scripts/app.js"></script> 
+ <script src="scripts/services/landowner_apicalls.js"></script>
+ <script src="scripts/services/hunter_apicalls.js"></script>
+ <script src="scripts/controllers/loginController.js"></script> 
+ <script src="scripts/directives/directives.js"></script> 
+ <script src="scripts/controllers/landowner/dashboard.js"></script>
+  <script src="scripts/controllers/landowner/addProperty.js"></script>
+   <script src="scripts/controllers/landowner/addProperty_outline.js"></script>
+   <script src="scripts/controllers/landowner/addProperty_description.js"></script>
+   <script src="scripts/controllers/landowner/addProperty_area.js"></script>
+   <script src="scripts/controllers/landowner/addProperty_slot.js"></script>
+   <script src="scripts/controllers/landowner/addProperty_area_singleArea.js"></script>
+<script src="scripts/controllers/landowner/addProperty_area_allAreas.js"></script>
+<script src="scripts/controllers/landowner/landownerCoupons.js"></script>
+<script src="scripts/controllers/landowner/hunterDetails.js"></script>
+<script src="scripts/controllers/stripeController.js"></script> 
+<script src="scripts/controllers/hunter/hunterBookSlot.js"></script>
+<script src="scripts/controllers/hunter/hunterProperties.js"></script>
+<script src="scripts/controllers/hunter/hunterBookingdetails.js"></script>
+   <script src="https://checkout.stripe.com/checkout.js"></script>
+<script src="scripts/controllers/hunter/hunterBookingdetails.js"></script>
+   <script src="scripts/controllers/hunter/tracking.js"></script>
+   <script src="scripts/controllers/landowner/landownerReservation.js"></script>
+   <script src="scripts/controllers/registration/registration.js"></script>
+   <script src="scripts/controllers/registration/loginVerification.js"></script>
+   <script src="scripts/controllers/registration/forgetPassword.js"></script>
+    <script src="scripts/controllers/registration/resetPassword.js"></script>
+<!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,80 @@
+  <div class="col-md-6">
+
+  <div class="row loginForm2 prop-add-area">
+    <div class="form-box">
+      <div class="form-top">
+        <div class="form-top-left">
+          <h3>Add Area</h3>
+        </div>
+      </div>
+      <div class="form-bottom text-center">
+        <form name="prop" role="form" ng-submit="addSlotToArea(prop)" class="login-form" novalidate>
+          <div class="form-group">
+            <label for="area-name">Area Name</label>
+            <input type="text" name="propertyName" placeholder="Area Name" class="form-propertyname form-control" id="form-username" ng-model="area.propertyAreaName" required>
+            <div class="error-txt"><span ng-show="area_submitted && prop.propertyName.$invalid && prop.propertyName.$error.required">Area Name is required.</span></div>
+
+          </div>
+          <div class="form-group">
+            <label for="area-name">Area Notes</label>
+            <textarea type="text" name="propertyAreaNote" placeholder="Enter shot description" class="form-propertyname form-control" id="slotnotes" ng-model="area.propertyAreaNote" ></textarea>
+            <div class="error-txt"></div>
+
+                  </div>
+                  <div>
+                  <div ng-repeat="date in area.dates" class="delete-filed-icon2">
+                    <todays-date date=date>
+              	<div  class="col-sm-4 form-group no-pad-left">
+                <label for="form-username">Start Date</label>
+                  <!--<input type="date" name="datefrom_{{$index}}" string-to-date  min="today" data-datepicker="{theme: 'flat',dateformat: 'MM/DD/YYYY'}" name="form-username" placeholder="MM/DD/YYYY" class="form-username form-control datepicker" id="fromtdate" ng-model="date.fromDate" required>-->
+                 <datepicker date-format="MM/dd/yyyy" date-min-limit="{{date.minDate}}" >
+                  <input  name="datefrom_{{$index}}" class="form-username form-control datepicker"  placeholder="MM/DD/YYYY" ng-model="date.fromDate" type="text" required>
+                  </datepicker>
+
+                </div>
+                <div class="col-sm-4 form-group padding-8">
+                <label for="form-username">End Date</label>
+                <!--<input type="date" name="dateto_{{$index}}" min="today" string-to-date  data-datepicker="{theme: 'flat',dateformat: 'MM/DD/YYYY'}" name="form-username" placeholder="MM/DD/YYYY" class="form-username form-control datepicker" id="enddate" ng-model="date.toDate" required>-->
+                  <datepicker date-format="MM/dd/yyyy" date-min-limit="{{date.maxDate}}" >
+                  <input   name="dateto_{{$index}}" class="form-username form-control datepicker"  placeholder="MM/DD/YYYY" ng-model="date.toDate" type="text" required>
+                </datepicker>
+                  <!--<input  class="form-username form-control" type="date" id="exampleInput2" name="input" ng-model="date.to"-->
+                          <!--placeholder="yyyy-MM-dd" min="date.from" max="2018-01-01" required />-->
+
+                </div>
+                <div class="col-sm-3 form-group no-pad-right">
+                <label for="form-username">Cost <i class="cost-size">($ per day)</i></label>
+                <input name="cost_{{$index}}" type="number" name="form-username" string-to-number placeholder="Enter cost" class="form-username form-control"  id="Cost" ng-model="date.cost" required>
+                <div class="error-txt"></div>
+
+                </div>
+              <div class="col-sm-1 form-group no-pad delete-filed-icon2">
+              <strong class="fa fa-times-circle" aria-hidden="true" ng-click="removeDateField($index)"></strong>
+              </div>
+              <div class="error-txt-more">
+                <span ng-show="prop['datefrom_{{$index}}'].$invalid && area_submitted">Start Date is required.</span>
+                <span ng-show="prop['dateto_{{$index}}'].$invalid && area_submitted ">End Date is required.</span>
+                <span ng-show="area_submitted && prop['cost_{{$index}}'].$invalid &&prop['cost_{{$index}}'].$error.required" >Cost is required.</span>
+                <span ng-show="area_submitted && prop['cost_{{$index}}'].$invalid && prop['cost_{{$index}}'].$error.number" > Only numbers are allowed.</span>
+                <span ng-show="checkValidNumber(prop['cost_{{$index}}'].$viewValue) && area_submitted" >Not a valid value</span>
+              </div>
+                    </todays-date>
+            </div>
+             <div class="error-txt"><span ng-show="!validDates && area_submitted&&!checkValidDates()" >Please arrange dates.</span></div>
+            
+            <div class="col-sm-12 no-pad">
+              <div class="col-sm-6 col-sm-offset-6">
+              <a href="" class="add-date-btn" ng-click="addDateField()"><i class="fa fa-plus" aria-hidden="true"></i> Add another date</a>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <button type="button" ng-click="gotoarea()" class="btn cancel-btn">Cancel</button>
+            <button type="submit" class="btn update-btn pull-right">Save </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

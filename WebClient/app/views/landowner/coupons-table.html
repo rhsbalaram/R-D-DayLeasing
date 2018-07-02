@@ -1,0 +1,144 @@
+<div class="top-content">
+	<div class="inner-bg">
+		<div class="container">
+			<div main-header></div>
+			<div class="main">
+				<div class="prop-hed">
+					<h2>Coupons </h2>
+				</div>
+				<div class="dashbord-item dashbord-item-owner">
+					<div class="col-sm-12 brd-bottom cart-page-btns">
+                    <button type="button" data-toggle="modal" ng-click="addCoupon()"  class="btn update-btn pull-right">Add Coupon</button>
+          
+                    </div>
+					<table class="table table-responsive table-striped">
+                	<thead>
+                    	<tr>
+                        	<th>coupon code</th>
+                            <th>From Date</th>
+                            <th>To Date</th>
+                            <th>Percentage Discount</th>
+                            <th>Amount Discount</th>
+                            <th>Discount Amount limit</th>
+                            <th>Min. Amount Criteria</th>
+                            <th>Usage Count</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="coupon in coupons | orderBy:'-'">
+                        	<td>{{coupon.couponCode}}</td>
+                            <td>{{coupon.formattedFromDate}}</td>
+                            <td>{{coupon.formattedToDate}}</td>
+                            <td>{{coupon.percentageDiscount||'-'}}</td>
+                            <td>{{coupon.amountDiscount||'-'}}</td>
+                            <td>{{coupon.amountLimit}}</td>
+                            <td>{{coupon.minimumAmountCriteria}}</td>
+                            <td>{{coupon.usageCount}}</td>
+                            <td width="6%">
+                            <a ng-click="editCoupon(coupon)"><img src="assets/img/edit-icon-light.png" /></a>
+                            </td>
+                            <td width="5.5%">
+                            <a ng-click="deleteCoupon(coupon.sno,$index)"><img src="assets/img/delete-icon.png" /></a>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+				</div>
+			</div>
+			<div footer></div>
+		</div>
+	</div>
+</div>
+
+
+<!-- Modal -->
+  <div class="modal fade" id="myCoupons" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header coupon-hed-brd">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <div class="prop-hed ">
+					<h2 class="clr-coupon">COUPON CODE</h2>
+				</div>
+        </div>
+        <div class="modal-body coupon-content-modal">
+          <form name="prop" role="form" ng-submit="addData(prop)" class="login-form" novalidate >
+                  <div class="form-group">
+                    <label for="form-username">Coupon Code</label>
+                    <input type="text" placeholder="Coupon Code" name="couponCode" ng-model="CouponData.couponCode" class="form-propertyname form-control" required autofocus>
+
+                    <div class="error-txt"><span ng-minlength="1"  ng-show=" prop.couponCode.$error.required &&  prop.couponCode.$invalid && submitted">Coupon Code is required.</span></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-username">From Date</label>
+                    <datepicker datepicker-mobile="true" date-format="MM/dd/yyyy"  class="coupon-date"  >
+                  <input  name="datefrom" class="form-username form-control datepicker calendar-icon"  placeholder="MM/DD/YYYY" ng-model="CouponData.fromDate" ng-change="onDateChange()" type="text" required>
+                  </datepicker>
+                  <br>
+                  <div class="error-txt"><span ng-minlength="1"  ng-show=" prop.datefrom.$error.required &&  prop.datefrom.$invalid && submitted">From Date is required.</span></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-username">To Date</label>
+                    <datepicker datepicker-mobile="true" date-format="MM/dd/yyyy"  class="coupon-date" >
+                  <input  name="dateto" class="form-username form-control datepicker calendar-icon"  placeholder="MM/DD/YYYY" ng-model="CouponData.toDate" ng-change="onDateChange()" type="text" required>
+                  </datepicker>
+                  <br>
+                  <div class="error-txt"><span ng-minlength="1"  ng-show=" prop.dateto.$error.required &&  prop.dateto.$invalid && submitted">To Date is required.</span></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-username">Percentage Discount</label>
+                    <input type="number" string-to-number placeholder="Percentage Discount" class="form-propertyname form-control" ng-change="changeOR()" ng-model="CouponData.percentageDiscount">
+
+                    <div class="error-txt"><span ng-minlength="1"  ng-show="amountrequired && submitted">Percentage or Amount Discount is required.</span></div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="form-username">(Or)</label>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="form-username">Amount Discount</label>
+                    <input type="number" string-to-number placeholder="Amount Discount" class="form-propertyname form-control" ng-change="changeOR()" ng-model="CouponData.amountDiscount">
+
+                    <div class="error-txt"><span ng-minlength="1"  ng-show="amountrequired && submitted">Percentage or Amount Discount is required.</span></div>
+                  </div>
+                   <div class="form-group">
+                    <label for="form-username">Discount Amount Limit To</label>
+                    <input type="number" string-to-number placeholder="Min. Amount Criteria" class="form-propertyname form-control" ng-model="CouponData.amountLimit" name="amountLimit" required>
+
+                    <div class="error-txt"><span ng-minlength="1"  ng-show=" prop.amountLimit.$error.required &&  prop.amountLimit.$invalid && submitted">Discount Amount Limit To is required.</span></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-username">Min. Amount Criteria</label>
+                    <input type="number" string-to-number placeholder="Min. Amount Criteria" class="form-propertyname form-control" ng-model="CouponData.minimumAmountCriteria" name="minimumAmountCriteria" required>
+
+                    <div class="error-txt"><span ng-minlength="1"  ng-show=" prop.minimumAmountCriteria.$error.required &&  prop.minimumAmountCriteria.$invalid && submitted">Min. Amount Criteria is required.</span></div>
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="form-username">Usage Count</label>
+                    <input type="number" string-to-number placeholder="Usage Count" class="form-propertyname form-control" ng-model="CouponData.usageCount" name="usageCount" required>
+
+                    <div class="error-txt"><span ng-minlength="1"  ng-show=" prop.usageCount.$error.required &&  prop.usageCount.$invalid && submitted">Usage Count is required.</span></div>
+                  </div>
+                  
+                  
+                   <div class="form-group">
+                    <button type="button"  data-dismiss="modal" class="btn cancel-btn">Cancel</button>
+                    <button type="submit"    class="btn update-btn">Save</button>
+                   </div>
+
+                </form>
+        </div>
+        <!--<div class="modal-footer coupon-footer-brd">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>-->
+      </div>
+      
+    </div>
+  </div>

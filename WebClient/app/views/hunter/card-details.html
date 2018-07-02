@@ -1,0 +1,89 @@
+<!-- Top content -->
+<div class="top-content">
+  <div class="inner-bg">
+    <div tabindex="1" id="Focus" class="container">
+      <div ng-show="login" hunter-header></div>
+			<div ng-show="!login" header></div>
+<div class="cart-page prop-area">
+	<div class="col-md-9 col-sm-9 col-xs-8 no-pad">
+      <div  class="prop-hed">
+      <h2>Book Slot </h2>
+      </div>
+      </div>
+      <div class="col-md-3"><div class="row time-out-alert">{{timer}}</div></div>
+        <div class="outline-instractions"><b>Property Name:</b> <i>{{property.propertyName}}</i>  |  <b>Location:</b> <i>{{property.subRegion+', '+property.region}}</i> </div>
+      <div class="dashbord-item">	
+      	<div class="col-md-6 no-pad">
+        	<div>
+        <div class="form-box">
+          <div class="form-bottom2 text-center">
+            <form role="form" class="login-form">
+            	<div class="map-page">
+               		<div id="outlinemap" map-height class="map-area"></div>
+               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="col-md-6">
+        
+            <div class="row loginForm2 prop-add-area">
+            <div class="form-box">
+              <div class="form-top">
+              <div class="form-top-left">
+                  <h3>Your Reservations</h3>
+                </div>
+              </div>
+              <div class="form-bottom text-center">
+                <form name="prop" role="form"  class="login-form">
+                   
+                    <div class="row divider" ng-repeat="booking in cart.bookings">
+                      <div class="col-md-8 col-sm-8 col-xs-12 no-pad-left">
+                        <div class="form-group">
+                        <div class="location-hed">{{booking.propertyName}} </div>
+                        <div class="outline-instractions marg-btm-30">Slot# {{booking.slotName}}<br>
+                         <i>{{booking.formattedDate}}   </i> </div>
+                      </div>
+                      </div>
+                      <div class="col-md-4 col-sm-4">
+                        <div class="location-hed">${{booking.price/100}}<a class="pull-right"><i class="fa fa-times-circle" aria-hidden="true" ng-click="removeFromCart($index,booking.propertyReservationUuid)"></i></a></div>
+                      </div>
+                    </div>
+                    <div class="row form-group">
+                    
+                    <div class="col-md-7 col-sm-7 col-xs-12 no-pad-left">
+                    	 <label for="form-username">Promo Code</label>
+                    	 <input type="text" placeholder="Enter Promo Code" ng-model="cart.dummyCouponCode" class="form-propertyname form-control" id="form-username">
+                    </div>
+                    <div class="col-md-5 col-sm-5 col-xs-12 no-pad-right">
+                    	<div class="form-group marg-right">
+                          <button type="submit" ng-click="validateCouponCode()" class="btn update-btn applay-code-btn pull-right">Apply Code </button>
+                         </div>
+                    </div>
+                      <div class="error-txt"><span>{{couponError}}</span></div>
+                    <div class="col-sm-12 no-pad clr-display">
+                     <p class="cart-page">{{minimumAmount}}</p>
+                    </div>
+                   
+                  </div>
+                  <div class="row total-price-area" ng-click="doPayment()">
+                  <div class="col-md-7 col-sm-7 col-xs-12 total-price">Total: ${{cart.total/100}}</div>
+                  <div class="col-md-5 col-sm-5 text-center"><a><img src="../../assets/img/cart-btn.png" ></a></div>
+                  </div>
+                   
+    
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+       
+       
+      </div>
+        </div>
+        </div>
+      <div footer></div>
+    </div>
+  </div>

@@ -1,0 +1,61 @@
+<div class="top-content">
+	<div class="inner-bg">
+		<div tabindex="1" id="Focus" class="container">
+			<div ng-show="login" hunter-header></div>
+			<div ng-show="!login" header></div>
+			
+			<div class="main">
+				<div class="prop-hed">
+					<h2>Properties ({{properties.length||0}}) </h2>
+				</div>
+				<div class="dashbord-item" ng-repeat="property in properties | orderBy:'-'" on-finish-render property-location-slide>
+				
+
+					<div class="col-lg-4 col-md-5 col-sm-6 col-xs-12 no-pad">
+						<div class="map">
+							<leaf id="{{property.propertyUuid}}" class="dash-map-area"></leaf>
+						</div>
+					</div>
+
+					 <div class="col-lg-8 col-md-7 col-sm-6 col-xs-12 no-pad propInfo">
+                <div class="col-lg-7 col-xs-12 no-pad-right propDesc">
+                	<h3>{{property.propertyName}}</h3>
+                    <p>{{property.propertyDescription}}</p>
+                   
+                    <h4>Features</h4>
+                    <ul>
+                        <li ng-repeat="feature in property.propertyFeatures">{{feature.data}}</li>
+                        
+                    </ul>			
+                </div>
+                <div class="col-lg-5 col-xs-12">
+                	<div>
+                    	<div class="col-md-6 col-sm-6 col-xs-6 no-pad">
+                        	<div class="slots"><h4>Slots: <b>{{property.propertySlots||0}}</b></h4></div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6 no-pad-right"><button ng-show="property.propertySlots>0" ng-click="getSlotsOfProperty(property.propertyUuid)" class="book-slot-btn">BOOK SLOT</button></div>
+                        <div class="slots">
+                        	<p class="slots-info" ng-bind-html="property.propertyBorder">3-A1 to 3-A6<br>3-B1 to 3-B4</p>
+                            <h4>Lease Type</h4>
+                            <div ng-show="property.propertyType=='Premium'" class="slots-info">Premium <div class="Premium-icon"></div></div>
+                            <div ng-show="property.propertyType=='Standard'" class="slots-info">Standard <div class="Standard-icon"></div></div>
+							<div ng-show="property.propertyType=='Others'" class="slots-info">Other </div>
+                            <h4>Address:</h4>
+                            <p class="slots-address">{{property.subRegion+', '+property.region}}</p>
+                            <p class="propertiesReadMore closed more-option">More <i class='fa fa-chevron-down'></i></p>
+                        </div>	 
+                    </div>
+                </div>
+                
+                </div>
+                <div class="propInfoDataIpad"></div>
+                
+               
+				</div>
+				
+				
+			</div>
+		</div>
+        <div footer></div>
+	</div>
+</div>

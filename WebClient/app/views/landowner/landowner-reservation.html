@@ -1,0 +1,46 @@
+<div class="top-content">
+	<div class="inner-bg">
+		<div class="container">
+			<div main-header></div>
+			<div class="main">
+				<div class="prop-hed">
+					<h2>Booking Details </h2>
+				</div>
+				<div class="dashbord-item dashbord-item-owner">
+
+				<h3><a href="" ng-class="{'white-link':!upcoming}" ng-click="showupcoming()">Upcoming</a> | <a href="" ng-class="{'white-link':upcoming}" ng-click="showhistory()">History</a></h3>
+                <table class="table table-responsive table-striped">
+                	<thead>
+                    	<tr>
+                        	<th>User Name</th>
+                            <th>Email</th>
+                            <th>Payment Id</th>
+                            <th>Property Name</th>
+                            <th>Slot Name</th>
+                            <th>Date of Booking</th>
+                            <th>Cost</th>
+                            <th>Coupon Code</th>
+                            <th ng-show="upcoming"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="booking in reservations">
+                        	<td>{{booking.userName}}</td>
+                            <td>{{booking.paymentId}}</td>
+                            <td>{{booking.payId}}</td>
+                            <td>{{booking.propertyName}}</td>
+                            <td>{{booking.slotName}}</td>
+                            <td>{{booking.formattedDate}}</td>
+                            <td>${{booking.price/100}}</td>
+                            <td>{{booking.couponCode}}</td>
+                            <td ng-show="upcoming"><a class="tbl-link" ng-show="booking.paymentStatus=='Booked'" href="" ng-click="deleteLandownerReservation($index,booking.propertyReservationUuid)">Cancel</a><span ng-show="booking.paymentStatus!='Booked'">{{booking.paymentStatus}}</span></td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+				</div>
+			</div>
+			<div footer></div>
+		</div>
+	</div>
+</div>

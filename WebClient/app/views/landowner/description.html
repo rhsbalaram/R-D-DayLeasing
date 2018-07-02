@@ -1,0 +1,78 @@
+<div class="main prop-area">
+      <div  class="prop-hed">
+      <h2 >Add Property </h2>
+      </div>
+      <div class="dashbord-item">
+      	<div class="col-md-6 no-pad">
+        	<div>
+        <div class="form-box">
+          <div class="form-bottom2 text-center">
+            <form role="form" class="login-form">
+            	<div class="map-page">
+               		<div id="outlinemap" map-height class="map-area"></div>
+               </div>
+            </form>
+          </div>
+        </div>
+      </div>
+        </div>
+        <div class="col-md-6">
+
+            <div class="row loginForm2 prop-add-area">
+            <div class="form-box">
+              <div class="form-top">
+               <!--<div class="form-top-left">
+                  <h3>Property Details</h3>
+                </div>-->
+              </div>
+              <div class="form-bottom text-center">
+                <form name="prop" role="form" ng-submit="adddescription(prop)" class="login-form" novalidate >
+                  <div class="form-group">
+                    <label for="form-username">Property Name</label>
+                    <input type="text" ng-minlength="1" name="propertyName" placeholder="Property name" class="form-propertyname form-control" id="form-username" ng-disabled="hasBookings" ng-model="property.propertyName" required autofocus>
+
+                    <div class="error-txt"><span ng-minlength="1"  ng-show=" prop.propertyName.$error.required &&  prop.propertyName.$invalid && submitted">Property Name is required.</span></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-username">Description</label>
+                    <textarea type="text"  ng-minlength="1" name="propertyDescription" placeholder="Description" class="form-username form-control" id="Description" ng-model="property.propertyDescription" required ></textarea>
+                    <div class="error-txt"><span ng-show="submitted && prop.propertyDescription.$error.required && prop.propertyDescription.$invalid ">Description is required.</span></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-username">Type of Leasing</label>
+                    <select class="form-username form-control" id="soflow" ng-model="property.propertyType" name="propertyType" required>
+                    	<option value="">Select the type of leasing</option>
+                    	<option>Premium</option>
+                        <option>Standard</option>
+                        <option>Others</option>
+                    </select>
+                    <div class="error-txt"><span ng-show="submitted && prop.propertyType.$error.required"> Type of Leasing is required.</span></div>
+                  </div>
+                  <div class="form-group">
+                    <label for="form-username">Features</label>
+                    <div ng-repeat="feature in property.propertyFeatures" class="delete-filed-icon">
+                    <input type="text" id="feature_{{$index}}" ng-init="setFocus('feature_'+$index)" name="feature_{{$index}}" placeholder="Features" class="form-username form-control feature-input no-marg" id="Features" ng-model="feature.data" required>
+                    <i class="fa fa-times-circle" aria-hidden="true" ng-click="removeFeaturetype($index)"></i>
+                     <div class="error-txt-feature" ><span ng-show="submitted && prop['feature_{{$index}}'].$error.required && prop['feature_{{$index}}'].$invalid ">Feature is required.</span></div>
+                    </div>
+                    <div class="col-sm-12 no-pad">
+              <div class="col-sm-7 col-sm-offset-5">
+                    <a href="" ng-click="addFeaturetype()" class="add-feature-btn"><i class="fa fa-plus" aria-hidden="true"></i> Add another feature</a>
+                    </div>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                    <button type="button" ng-click="gotooutline()" class="btn cancel-btn">Cancel</button>
+                    <button type="submit"    class="btn update-btn pull-right">Save <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                   </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+        </div>

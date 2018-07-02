@@ -1,0 +1,57 @@
+<div class="col-md-6 no-pad">
+        
+            <div class="row loginForm2 prop-add-area">
+            <div class="form-box">
+              <div class="form-top">
+               <!--<div class="form-top-left">
+                  <h3>Property Details</h3>
+                </div>-->
+              </div>
+              <div class="row form-bottom text-center no-pad">
+              <div class="col-sm-12 text-center">
+					<button type="button" ng-click="addAreaToProperty()" class="btn update-btn"><i class="fa fa-plus" aria-hidden="true"></i> Add Area</button>
+				   </div>
+              	<div ng-show="property.areas.length==0" class="empty-page-info-area text-center">Please start adding area and slots!</div>
+				<div ng-repeat="area in property.areas">
+                    <h3>{{area.propertyAreaName}} &nbsp;&nbsp; <a id="{{area.propertyAreaUuid}}" href="" ng-click="editAreaofProperty($index)" class="edit-icon-in-area">Edit</a>  <span class="pipe-style">|</span> <a ng-click="deleteArea($index)" class="edit-icon-in-area">Delete</a> </h3>
+                   
+				   <table  class="table table-responsive table-striped editable-icons">
+                   		<thead>
+                        	<tr>
+                              <td width="10%"></td>
+                            	<th width="30%">Slot#</th>
+                                <th width="30%">Size  <span class="tbl-subhed">(in yards)</span></th>
+                              <!--   <th width="20%">Hunter <span class="tbl-subhed">(Maximum)</span></th> -->
+                                <th width="10%"></th>
+                                <th width="10%"></th>
+                                <th width="10%"></th>
+                            </tr>
+                        </thead>
+                        <tr ng-repeat="slot in area.slots">
+                          <td width="10%"><input type="checkbox" ng-model="slot.radioValue" ng-value="false"></td>
+							<td width="30%">{{slot.slotName}}</td>
+							<td width="30%">{{slot.slotSize}}</td>
+							<!-- <td width="20%">{{slot.maxHunter}}</td> -->
+                            <td width="10%" title="COPY"><a ng-click="copySlot(area,$parent.$index,$index)"><img src="assets/img/duplicate.png" /></a></td>
+							<td width="10%" title="EDIT"><a ng-click="editSlot($parent.$index,$index)"><img src="assets/img/edit-icon-light.png" /></a></td>
+							<td width="10%" title="DELETE"><a ng-click="deleteSlot($parent.$index,$index)"><img src="assets/img/delete-icon.png" /></a></td>
+						</tr>
+                        <tr>
+                        	<td colspan="6" class="text-center">
+                            	<div ng-click="addSlot(area,$index)"><a><i class="fa fa-plus" aria-hidden="true"></i> Add Slot</a></div>
+                            </td>
+                            <td width="10%" title="COPY"><a ng-click="copyMultipleSlots(area,$index)"><img src="assets/img/duplicate.png" /></a></td>
+                            
+                        </tr>
+                       
+                   </table>
+                   </div>
+                   
+                   <div class="form-btns">
+					<button type="button" ng-click="gotoDescription()" class="btn update-btn"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button>
+					<button type="button" ng-click="gotoDashboard()" class="btn update-btn pull-right">Done</button>
+				   </div>
+              </div>
+            </div>
+          </div>
+        </div>
